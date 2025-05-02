@@ -14,7 +14,7 @@ export function generateTwiML(callData: any) {
   // Instead of using our own WebSocket endpoint, we'll use a simple <Say> action for testing
   twiml.say(
     { voice: "alice" },
-    "This is a test call to verify connectivity. Your WebSocket implementation needs to be hosted on a platform that supports WebSocket protocol.",
+    "This is a test call to verify connectivity. Your WebSocket implementation needs to be hosted on a platform that supports WebSocket protocol."
   )
 
   // Log the generated TwiML for debugging
@@ -47,7 +47,7 @@ export async function makeOutboundCall(to: string, callData: any) {
       to,
       from: process.env.TWILIO_PHONE_NUMBER!,
       twiml: generateTwiML(callData),
-      statusCallback: `${process.env.NEXT_PUBLIC_BASE_URL}/api/webhook/twilio-status`,
+      statusCallback: `${process.env.BASE_URL}/api/webhook/twilio-status`,
       statusCallbackEvent: ["initiated", "ringing", "answered", "completed"],
       statusCallbackMethod: "POST",
     })
